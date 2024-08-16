@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Jost", sans-serif;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/253/638/452/light-background-hd-wallpaper-preview.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1200px;
+        }
+
+        .slider-images {
+            display: flex;
+            align-items: center;
+            gap: 21px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-img {
+            width: 110px;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.7s ease;
+            overflow: hidden;
+            transform: translateZ(-100px);
+            transform-origin: center;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+        }
+
+        .slider-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .slider-images .slider-img:nth-child(1),
+        .slider-images .slider-img:nth-child(7) {
+            height: 380px;
+        }
+
+        .slider-images .slider-img:nth-child(2),
+        .slider-images .slider-img:nth-child(6) {
+            height: 480px;
+        }
+
+        .slider-images .slider-img:nth-child(3),
+        .slider-images .slider-img:nth-child(5) {
+            height: 560px;
+        }
+
+        .slider-images .slider-img:nth-child(4) {
+            height: 665px;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            transform: rotate(270deg);
+            transition: all 0.7s ease;
+            white-space: nowrap;
+        }
+
+        .slider-img.active h1 {
+            transform: rotate(0deg);
+            left: 50%;
+            top: 20px;
+            transform: translateX(-50%);
+        }
+
+        .details {
+            position: absolute;
+            bottom: 43px;
+            left: 43px;
+            z-index: 10;
+            /* Ensure it is above the image */
+        }
+
+        .details h2 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .details p {
+            font-size: 16px;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .slider-img.active .details h2,
+        .slider-img.active .details p {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .slider-img.active {
+            width: 766px !important;
+            height: 750px !important;
+            transform: translateZ(100px) rotateY(0deg);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .slider-img:hover {
+            transform: translateZ(50px) rotateY(-15deg);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="slider-container">
+        <div class="slider-images">
+            <div class="slider-img active">
+                <a href="index3.html"><img src="https://img.freepik.com/premium-psd/logo-mockup_657998-15.jpg" alt="1"></a>
+                <h1>Business</h1>
+                <div class="detail">
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index4.html"> <img src="https://www.shutterstock.com/image-vector/palette-icon-color-symbol-art-260nw-406400521.jpg" alt="2"></a>
+                <h1>Artist</h1>
+                <div class="details">
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index5.html"><img src="https://i.pinimg.com/736x/95/d0/28/95d028d025dce543f046ee4468f3fbcc.jpg" alt="3"></a>
+                <h1>Sports</h1>
+                <div class="details">
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index6.html"><img src="https://logopond.com/logos/b4f4918b027ac2801e051ef9f44b44c9.png"
+                    alt="4"></a>
+                <h1>Coders</h1>
+                <div class="details">
+            
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index7.html"><img src="https://wallpapers.com/images/hd/silver-and-gold-upsc-logo-1w127617rcip916o.jpg"
+                    alt="5"></a>
+                <h1>UPSC</h1>
+                <div class="details">
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index8.html"><img src="https://cdn.sanity.io/images/kts928pd/production/03c5e1f41a08f714c252b6763457b843f8b8bc31-731x731.png"
+                    alt="6"></a>
+                <h1>NGO</h1>
+                <div class="details">
+                    
+                </div>
+            </div>
+            <div class="slider-img">
+                <a href="index9.html"><img src="https://i.pinimg.com/1200x/b1/ed/c1/b1edc133615164ccebf76d9e5906f346.jpg"
+                    alt="7"></a>
+                <h1>Web Design</h1>
+                <div class="details">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        
+    document.addEventListener('DOMContentLoaded', function () {
+        const sliderImages = document.querySelectorAll('.slider-img');
+
+        sliderImages.forEach(img => {
+            img.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent the default anchor action
+                document.querySelector('.slider-img.active').classList.remove('active');
+                this.classList.add('active');
+
+                const link = this.querySelector('a').getAttribute('href');
+                setTimeout(() => {
+                    window.location.href = link; // Navigate to the link after the transition
+                }, 600); // Delay to allow transition to complete
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>

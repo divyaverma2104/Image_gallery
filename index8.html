@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 40px 20px;
+        }
+
+        .heading {
+            width: 50%;
+            padding-bottom: 50px;
+        }
+
+        .heading h3 {
+            font-size: 3em;
+            font-weight: bolder;
+            border-bottom: 3px solid #222;
+        }
+
+        .heading h3 span {
+            font-weight: 100;
+        }
+
+        .box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .dream {
+            position: relative;
+        }
+
+        .dream img {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .dream img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            margin: 40px 0 70px 0;
+            background: #222;
+            padding: 15px 40px;
+            border-radius: 5px;
+        }
+
+        .btn a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: bolder;
+            letter-spacing: 3px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 50%;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lightbox p {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .prev,
+        .lightbox .next {
+            position: absolute;
+            top: 50%;
+            font-size: 2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lightbox .prev {
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .next {
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .back {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 769px) {
+            .box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media only screen and (max-width: 643px) {
+            .heading {
+                width: 100%;
+            }
+
+            .heading h3 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h3>NGO <span>Gallery</span></h3>
+        </div>
+        <div class="box">
+            <div class="dream">
+                <img src="https://i.pinimg.com/736x/27/9f/1b/279f1b2775eefab47df2cb0cc5250c0d.jpg"
+                    alt="Gallery Image 1">
+            </div>
+            <div class="dream">
+                <img src="https://www.hdfcbank.com/content/api/contentstream-id/723fb80a-2dde-42a3-9793-7ae1be57c87f/ee29c5ab-c46b-4e16-b2e3-8208f95d1ac9/Personal/Save/High%20Network%20Banking/Premier%20Banking/images/GiveIndia-banner-530-300.jpg"
+                    alt="Gallery Image 2">
+            </div>
+            <div class="dream">
+                <img src="https://pbs.twimg.com/media/F7hE91xWgAAbFS-.jpg" alt="Gallery Image 3">
+            </div>
+            <div class="dream">
+                <img src="https://www.akshayapatra.org/includefiles/userfiles/images/Group-6829-1.png"
+                    alt="Gallery Image 4">
+            </div>
+            <div class="dream">
+                <img src="https://vikalpsangam.org/wp-content/uploads/migrate/AlternativeEconomies/goonj_dealing_with_clothing.jpg"
+                    alt="Gallery Image 5">
+            </div>
+            <div class="dream">
+                <img src="https://thecsruniverse.com/adminxsafe/uploads/20230928091208" alt="Gallery Image 6">
+            </div>
+            <div class="dream">
+                <img src="https://serudsindia.org/wp-content/uploads/2020/06/preschool-education-in-seruds-creche-1024x678.jpg"
+                    alt="Gallery Image 7">
+            </div>
+            <div class="dream">
+                <img src="https://www.pratham.org/wp-content/uploads/2019/05/Pratham-children-in-an-Urban-Learning-Centre-in-a-Delhi-slum-community.jpg"
+                    alt="Gallery Image 8">
+            </div>
+            <div class="dream">
+                <img src="https://www.euroschoolindia.com/wp-content/uploads/2024/05/what-are-the-rights-of-a-child.webp"
+                    alt="Gallery Image 9">
+            </div>
+        </div>
+        <div class="btn">
+            <a href="index2.html">Back</a>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <span class="prev" onclick="changeImage(-1)">❮</span>
+        <img id="lightbox-img" src="" alt="">
+        <h2 id="lightbox-heading">Image Heading</h2>
+        <p id="lightbox-description">Image description goes here.</p>
+        <span class="next" onclick="changeImage(1)">❯</span>
+        <div class="back" onclick="closeLightbox()">Back</div>
+    </div>
+
+    <script>
+        let currentImageIndex;
+        const images = document.querySelectorAll('.dream img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxHeading = document.getElementById('lightbox-heading');
+        const lightboxDescription = document.getElementById('lightbox-description');
+
+        // Array of headings and descriptions for each image
+        const imageDetails = [
+            { heading: "Smile Foundation", description: "Established in 2002, Smile Foundation is an Indian development organization, impacting the lives of over 15 lakh children and their families every year." },
+            { heading: "GiveIndia Foundation.", description: "GiveIndia is registered as Give Foundation, a not-for-profit company u/s 8 of the Companies Act, 2013. (Reg. No. 037902, dtd. April 28, 2000), with the RoC, Ahmedabad." },
+            { heading: "HelpAge India", description: "HelpAge India is a leading charity platform in India working with and for disadvantaged elderly for more than 4 decades." },
+            { heading: "Akshaya Patra Foundation", description: "The Akshaya Patra Foundation is a not-for-profit organisation headquartered in Bengaluru, India." },
+            { heading: "Goonj", description: "Goonj aims to build an equitable relationship of strength, sustenance and dignity between the cities and villages using the under-utilized urban material as a tool to trigger development with dignity, across the country." },
+            { heading: "Project Nanhi Kali", description: "Project Nanhi Kali was founded in 1996 at K.C. Mahindra Education Trust by Anand Mahindra with the vision of creating a world where girls, despite the patriarchal challenges and societal biases they face, are empowered through education."},
+            { heading: "SERUDS.", description: "SERUDS is a Non-Government Organization NGO in Kurnool District of Andhra Pradesh, India working as a charitable society or trust for the welfare and development of deprived street children, orphans, destitute women, poor old age people." },
+            { heading: "Pratham Education Foundation", description: "Pratham’s Early Childhood Education program works with children in the age group of 3-6 years on physical, language, cognitive and social-emotional development." },
+            { heading: "CRY (Child Rights and You)", description: "CRY works with project partners at the grassroots level to create sustainable change for India’s children. We currently have 102 project partners across 19 states in India that work on various child rights issues" }
+        ];
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                showLightbox(img.src, index);
+            });
+        });
+
+        function showLightbox(src, index) {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = src;
+            lightboxHeading.textContent = imageDetails[index].heading;
+            lightboxDescription.textContent = imageDetails[index].description;
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            lightboxImg.src = images[currentImageIndex].src;
+            lightboxHeading.textContent = imageDetails[currentImageIndex].heading;
+            lightboxDescription.textContent = imageDetails[currentImageIndex].description;
+        }
+    </script>
+</body>
+
+</html> 

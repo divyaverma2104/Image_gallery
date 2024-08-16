@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 40px 20px;
+        }
+
+        .heading {
+            width: 50%;
+            padding-bottom: 50px;
+        }
+
+        .heading h3 {
+            font-size: 3em;
+            font-weight: bolder;
+            border-bottom: 3px solid #222;
+        }
+
+        .heading h3 span {
+            font-weight: 100;
+        }
+
+        .box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .dream {
+            position: relative;
+        }
+
+        .dream img {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .dream img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            margin: 40px 0 70px 0;
+            background: #222;
+            padding: 15px 40px;
+            border-radius: 5px;
+        }
+
+        .btn a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: bolder;
+            letter-spacing: 3px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 50%;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lightbox p {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .prev,
+        .lightbox .next {
+            position: absolute;
+            top: 50%;
+            font-size: 2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lightbox .prev {
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .next {
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .back {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 769px) {
+            .box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media only screen and (max-width: 643px) {
+            .heading {
+                width: 100%;
+            }
+
+            .heading h3 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h3>Artist <span>Gallery</span></h3>
+        </div>
+        <div class="box">
+            <div class="dream">
+                <img src="https://www.ft.com/__origami/service/image/v2/images/raw/http%3A%2F%2Fcom.ft.imagepublish.upp-prod-eu.s3.amazonaws.com%2F3f605632-3eb4-11e8-b9f9-de94fa33a81e?source=next-article&fit=scale-down&quality=highest&width=700&dpr=1"
+                    alt="Gallery Image 1">
+            </div>
+            <div class="dream">
+                <img src="https://www.thewomb.in/wp-content/uploads/2022/01/Bharti-Kher-1.jpg" alt="Gallery Image 2">
+            </div>
+            <div class="dream">
+                <img src="https://photoquotes.com/storage/author/Sohrab-Hura.jpg" alt="Gallery Image 3">
+            </div>
+            <div class="dream">
+                <img src="https://images.squarespace-cdn.com/content/v1/6213069cc62e8c6048531bae/1fff7064-7ebb-44af-a49d-01778d425f6e/Shilpa+Gupta."
+                    alt="Gallery Image 4">
+            </div>
+            <div class="dream">
+                <img src="https://assets.telegraphindia.com/telegraph/5c59d51e-bb9d-434a-96d0-2e68da05378d.jpg"
+                    alt="Gallery Image 5">
+            </div>
+            <div class="dream">
+                <img src="https://media.assettype.com/cinemaexpress/import/2023/5/28/original/Anurag_Kashyap.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true"
+                    alt="Gallery Image 6">
+            </div>
+            <div class="dream">
+                <img src="https://www.ncpamumbai.com/wp-content/uploads/2020/01/aditimangal-top-1.jpg"
+                    alt="Gallery Image 7">
+            </div>
+            <div class="dream">
+                <img src="https://www.hindustantimes.com/ht-img/img/2023/07/17/1600x900/Ustad-Zakir-Hussain_1689580914756.jpg"
+                    alt="Gallery Image 8">
+            </div>
+            <div class="dream">
+                <img src="https://images.moneycontrol.com/static-mcnews/2023/02/Atul-Kumar-770x433.jpg?impolicy=website&width=770&height=431"
+                    alt="Gallery Image 9">
+            </div>
+        </div>
+        <div class="btn">
+            <a href="index2.html">Back</a>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <span class="prev" onclick="changeImage(-1)">❮</span>
+        <img id="lightbox-img" src="" alt="">
+        <h2 id="lightbox-heading">Image Heading</h2>
+        <p id="lightbox-description">Image description goes here.</p>
+        <span class="next" onclick="changeImage(1)">❯</span>
+        <div class="back" onclick="closeLightbox()">Back</div>
+    </div>
+
+    <script>
+        let currentImageIndex;
+        const images = document.querySelectorAll('.dream img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxHeading = document.getElementById('lightbox-heading');
+        const lightboxDescription = document.getElementById('lightbox-description');
+
+        // Array of headings and descriptions for each image
+        const imageDetails = [
+            { heading: "Subodh Gupta", description: "Visual Art: Large-scale installations using everyday objects and found materials." },
+            { heading: "Bharti Kher", description: "Sculpture: Mixed media works exploring identity, culture, and feminism." },
+            { heading: "Sohrab Hura", description: "Photography: Intimate, personal photographs exploring Indian identity and culture." },
+            { heading: "Shilpa Gupta", description: "Installation Art: Interactive installations exploring language, communication, and human relationships." },
+            { heading: "Nikhil Chopra", description: "Performance Art: Live performances exploring identity, history, and cultural heritage." },
+            { heading: "Anurag Kashyap", description: "Film: Groundbreaking, independent films exploring Indian society and culture." },
+            { heading: "Aditi Mangaldas", description: "Dance: Innovative, fusion dance style blending traditional and modern techniques." },
+            { heading: " Ustad Zakir Hussain", description: "Music: Legendary tabla playing and contributions to Indian classical music." },
+            { heading: "Atul Kumar", description: "Theater: Innovative, experimental theater productions exploring social issues." }
+        ];
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                showLightbox(img.src, index);
+            });
+        });
+
+        function showLightbox(src, index) {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = src;
+            lightboxHeading.textContent = imageDetails[index].heading;
+            lightboxDescription.textContent = imageDetails[index].description;
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            lightboxImg.src = images[currentImageIndex].src;
+            lightboxHeading.textContent = imageDetails[currentImageIndex].heading;
+            lightboxDescription.textContent = imageDetails[currentImageIndex].description;
+        }
+    </script>
+</body>
+
+</html>

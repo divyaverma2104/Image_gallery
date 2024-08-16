@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery Front Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/premium-photo/realistic-navy-blue-glitter-background-36294593ht-6f20b8-background-generative-ai_913266-47502.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-family: 'Raleway Dots', cursive;
+            margin: 0;
+            padding-top: 20px;
+            background: linear-gradient(90deg, rgb(238, 72, 72), rgb(243, 182, 67), rgb(243, 243, 72), rgb(126, 185, 233), rgb(159, 86, 215), rgb(225, 58, 144));
+            background-size: 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow 5s ease-in-out infinite;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .frame {
+            width: 70%;
+            height: 60%;
+            border: 5px solid #ecebe6;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 10px 10px 20px rgba(61, 59, 59, 0.7);
+            transform: rotate(-5deg);
+            margin-top: 40px;
+        }
+
+        .image-container {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: top 1s ease, transform 1s ease;
+            transform: rotate(-10deg);
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: #50aa0b;
+            color: black;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        button:hover {
+            background-color: #04ad23;
+        }
+        p {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Image Gallery</h1>
+    <div class="frame">
+        <div class="image-container" id="imageContainer">
+            <a href="index2.html"><button>Next</button></a> 
+            <img src="https://wallpapers.com/images/hd/plexes-numbers-code-cyberspace-rendering-mjhn2mwqb8xzjg96.jpg" alt="Beautiful Scenery">
+            <p>We need a user-friendly image gallery with a "Next" button for page navigation, where each slide opens a distinct gallery of individuals, ensuring smooth transitions and easy navigation.
+
+
+
+
+
+
+
+
+            </p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const imageContainer = document.getElementById('imageContainer');
+            setTimeout(() => {
+                imageContainer.style.top = '0';
+                imageContainer.style.transform = 'rotate(0deg)';
+            }, 200);
+
+            imageContainer.addEventListener('click', function() {
+                window.location.href = 'next-page.html';
+            });
+        };
+    </script>
+</body>
+</html>

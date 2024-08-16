@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 40px 20px;
+        }
+
+        .heading {
+            width: 50%;
+            padding-bottom: 50px;
+        }
+
+        .heading h3 {
+            font-size: 3em;
+            font-weight: bolder;
+            border-bottom: 3px solid #222;
+        }
+
+        .heading h3 span {
+            font-weight: 100;
+        }
+
+        .box {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .dream {
+            position: relative;
+        }
+
+        .dream img {
+            width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .dream img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            margin: 40px 0 70px 0;
+            background: #222;
+            padding: 15px 40px;
+            border-radius: 5px;
+        }
+
+        .btn a {
+            color: white;
+            font-size: 1.2em;
+            text-decoration: none;
+            font-weight: bolder;
+            letter-spacing: 3px;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 50%;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+        }
+
+        .lightbox h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .lightbox p {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .lightbox .prev,
+        .lightbox .next {
+            position: absolute;
+            top: 50%;
+            font-size: 2em;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .lightbox .prev {
+            left: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .next {
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        .lightbox .back {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 769px) {
+            .box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media only screen and (max-width: 643px) {
+            .heading {
+                width: 100%;
+            }
+
+            .heading h3 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h3>Coders <span>Gallery</span></h3>
+        </div>
+        <div class="box">
+            <div class="dream">
+                <img src="https://news.mit.edu/sites/default/files/images/201809/Anant-Agarwal-edX-Yidan-Prize.jpg" alt="Gallery Image 1">
+            </div>
+            <div class="dream">
+                <img src="https://uploads-ssl.webflow.com/607f0c672fd49c96f7324240/607f0c672fd49c63c43244be_%20Erik%20Trautman.jpg" alt="Gallery Image 2">
+            </div>
+            <div class="dream">
+                <img src="https://g.acdn.no/obscura/API/dynamic/r1/ece5/tr_2000_2000_s_f/0000/sand/2022/10/26/9/DSC09956%2B%25282%2529.JPG?chk=DE22C5" alt="Gallery Image 3">
+            </div>
+            <div class="dream">
+                <img src="https://blogs.ubc.ca/etec522/files/2020/10/Andrew-Ng-and-Daphne-Koller-1024x576.jpg" alt="Gallery Image 4">
+            </div>
+            <div class="dream">
+                <img src="https://images.ctfassets.net/s5uo95nf6njh/5n5Ehe9f3g7bvzNAbuHXv6/200e48b9fd7ea40a2eb8e6d3fcd99970/FINAL_1_X135jEpb1uAtd199tqOtfA.jpg?w=2000&fm=jpg" alt="Gallery Image 5">
+            </div>
+            <div class="dream">
+                <img src="https://macemagazine.com/wp-content/uploads/2021/05/ColinHughes_AQA_Permission.jpg">
+            </div>
+            <div class="dream">
+                <img src="https://i.ytimg.com/vi/8-pxqeO24Ww/maxresdefault.jpg" alt="Gallery Image 7">
+            </div>
+            <div class="dream">
+                <img src="https://hls.harvard.edu/wp-content/uploads/2022/08/David-Malan.jpg" alt="Gallery Image 8">
+            </div>
+            <div class="dream">
+                <img src="https://scrimba.ams3.cdn.digitaloceanspaces.com/assets/teachers/per.jpg" alt="Gallery Image 9">
+            </div>
+        </div>
+        <div class="btn">
+            <a href="index2.html">Back</a>
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close" onclick="closeLightbox()">×</span>
+        <span class="prev" onclick="changeImage(-1)">❮</span>
+        <img id="lightbox-img" src="" alt="">
+        <h2 id="lightbox-heading">Image Heading</h2>
+        <p id="lightbox-description">Image description goes here.</p>
+        <span class="next" onclick="changeImage(1)">❯</span>
+        <div class="back" onclick="closeLightbox()">Back</div>
+    </div>
+
+    <script>
+        let currentImageIndex;
+        const images = document.querySelectorAll('.dream img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxHeading = document.getElementById('lightbox-heading');
+        const lightboxDescription = document.getElementById('lightbox-description');
+
+        // Array of headings and descriptions for each image
+        const imageDetails = [
+            { heading: "Anant Agrwal", description: " EDX :-Founded by Anant Agarwal." },
+            { heading: "Erik Trautman and odin Community", description: " The Odin Project :- Founded by Erik Trautman and the Odin community." },
+            { heading: "Kai jim Refsnes", description: "W3 schools :- founded by Kai jim Refsnes." },
+            { heading: "Daphne Koller and Andrew Ng", description: "Coursera :- foounded by Daphne Koller and Andrew Ng." },
+            { heading: "Quincy Larson", description: "FreeCodeCamp :- founded by Quincy Larson." },
+            { heading: "Colin Hughes", description: "Project Euler :- founded by Coiln Hughes." },
+            { heading: "salman shan", description: "Khan academy :- founded by Salman Khan." },
+            { heading: "David Malan", description: "CS50 by Harvard :- founded by David Malan." },
+            { heading: "Per Harald Borgen", description: " Scrimba :- founded by Per Harald Borgen." }
+        ];
+
+        images.forEach((img, index) => {
+            img.addEventListener('click', () => {
+                currentImageIndex = index;
+                showLightbox(img.src, index);
+            });
+        });
+
+        function showLightbox(src, index) {
+            lightbox.style.display = 'flex';
+            lightboxImg.src = src;
+            lightboxHeading.textContent = imageDetails[index].heading;
+            lightboxDescription.textContent = imageDetails[index].description;
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = images.length - 1;
+            } else if (currentImageIndex >= images.length) {
+                currentImageIndex = 0;
+            }
+            lightboxImg.src = images[currentImageIndex].src;
+            lightboxHeading.textContent = imageDetails[currentImageIndex].heading;
+            lightboxDescription.textContent = imageDetails[currentImageIndex].description;
+        }
+    </script>
+</body>
+
+</html>
